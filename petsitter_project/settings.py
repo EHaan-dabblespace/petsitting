@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
     # Site Apps
     'petsitter_project',
-
+    'petsitter_app',
 ]
 
 MIDDLEWARE = [
