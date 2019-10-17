@@ -1,0 +1,14 @@
+{% extends 'generic/base.html' %} {% block content %}
+<div class="login-form container">
+  <h2>Welcome Back!</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input class="button" type="submit" value="Login" />
+  </form>
+</div>
+<div class="register-option container">
+  <h2>New Around Here?</h2>
+  <a href="{% url 'django_registration_register' %}">Sign Up!</a>
+</div>
+{% endblock content %}
