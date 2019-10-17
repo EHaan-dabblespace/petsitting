@@ -1,0 +1,13 @@
+{% extends 'generic/base.html' %} {% block content %}
+
+<div class="pet-list container">
+  {% for pet in pets %}
+  <div class="pet-card container">
+    <a href="#">
+      <img src="{{ pet.photo.url }}" width="200px" height="250px" />
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}

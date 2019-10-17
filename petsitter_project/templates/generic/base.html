@@ -8,6 +8,17 @@
     <title>{% block title %}NoTitle{% endblock title %}</title>
   </head>
   <body>
+    <nav>
+      <ul>
+        {% if user.is_authenticated %} {% if user.is_superuser %}
+        <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
+        {% endif %}
+        <li><a href="{% url 'pet_list' %}">PETS</a></li>
+        <li><a href="#">FAMILIES</a></li>
+        <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+        {% endif %}
+      </ul>
+    </nav>
     <main>
       {% block content %} Woof! {% endblock content %}
     </main>
