@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
     # Site Apps
     'petsitter_project',
-
+    'petsitter_app',
 ]
 
 MIDDLEWARE = [
@@ -140,7 +140,7 @@ MEDIA_URL = '/media/'
 
 # Django Registration Settings
 ACCOUNT_ACTIVATION_DAYS = 1
-# LOGIN_REDIRECT_URL = '/'
-# LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/profile/pets/'
+LOGOUT_REDIRECT_URL = '/'
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
