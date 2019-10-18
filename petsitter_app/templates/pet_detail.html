@@ -21,4 +21,6 @@
   <p>{{ pet.other_notes }}</p>
 </div>
 
+<a href="{% url 'pet_update' pet.id %}">Update</a>
+
 {% endblock content %}

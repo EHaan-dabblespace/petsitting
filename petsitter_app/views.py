@@ -49,3 +49,25 @@ class PetCreateView(CreateView, LoginRequiredMixin):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+    # TODO: redirect to newly created pet detail page
+
+
+class PetUpdateView(UpdateView, LoginRequiredMixin):
+    template_name = './pet_create.html'
+    model = Pet
+    form_class = PetForm
+    success_url = reverse_lazy('pet_list')
+    login_url = reverse_lazy('login')
+
+    def get_queryset(self):
+        return Pet.objects.filter(id=self.kwargs['pk'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['pet'] = Pet.objects.get(pk=self.kwargs['pk'])
+        return context
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
