@@ -71,3 +71,11 @@ class PetUpdateView(UpdateView, LoginRequiredMixin):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class PetDeleteView(DeleteView, LoginRequiredMixin):
+
+    template_name = './pet_delete.html'
+    model = Pet
+    context_object_name = 'pet'
+    success_url = reverse_lazy('pet_list')

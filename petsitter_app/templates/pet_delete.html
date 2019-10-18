@@ -1,0 +1,10 @@
+{% extends 'generic/base.html' %} {% block content %}
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <img src="{{ pet.photo.url }}" width="200px" height="250px" />
+  <p>Are you sure you want to remove {{ pet.name }}?</p>
+  <input type="submit" value="Remove" />
+</form>
+
+{% endblock content %}
