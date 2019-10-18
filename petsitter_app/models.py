@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+# TODO: set default avatars using:
+# models.ImageField(upload_to='avatars/', null=True, blank=True, default='/static/img/default-user.png')
+
 
 class Family(models.Model):
     """ Model for Families. """

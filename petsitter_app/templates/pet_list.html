@@ -7,7 +7,9 @@
   {% for pet in pets %}
   <div class="pet-card container">
     <a href="{% url 'pet_detail' pet.id %}">
+      {% if pet.photo.url %}
       <img src="{{ pet.photo.url }}" width="200px" height="250px" />
+      {% endif %}
     </a>
   </div>
   {% endfor %}

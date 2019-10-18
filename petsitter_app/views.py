@@ -5,6 +5,7 @@ from .models import Pet, Family
 from .forms import PetForm, FamilyForm
 from django.urls import reverse_lazy
 
+# TODO: Namespace the templates to 'family' and 'pet'
 
 # Pet Views
 
@@ -79,3 +80,16 @@ class PetDeleteView(DeleteView, LoginRequiredMixin):
     model = Pet
     context_object_name = 'pet'
     success_url = reverse_lazy('pet_list')
+
+
+# Family Views
+
+class FamilyListView(ListView, LoginRequiredMixin):
+    template_name = './family_list.html'
+    model = Family
+    context_object_name = 'families'
+    login_url = reverse_lazy('login')
+    pk_url_kwarg = 'id'
+
+    def get_queryset(self):
+        return Family.objects.filter(user_id=self.request.user.id)
