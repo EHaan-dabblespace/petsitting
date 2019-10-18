@@ -54,6 +54,11 @@ class Pet(models.Model):
         ('rodent', 'Rodent')
     ]
 
+    SEX = [
+        ('male', 'Male'),
+        ('female', 'Female')
+    ]
+
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='pet', null=True)
     family = models.ForeignKey(
@@ -66,6 +71,7 @@ class Pet(models.Model):
     animal_type = models.CharField(
         choices=TYPES, default='Animal', max_length=48)
     age = models.IntegerField(blank=True, null=True)
+    sex = models.CharField(choices=SEX, max_length=48, blank=True)
     feeding_routine = models.CharField(max_length=500, blank=True)
     daily_routine = models.CharField(max_length=500, blank=True)
     medical_routine = models.CharField(max_length=500, blank=True)

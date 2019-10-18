@@ -1,0 +1,24 @@
+{% extends 'generic/base.html' %} {% block content %}
+
+<div class="pet-detail container">
+  <img src="{{ pet.photo.url }}" width="200px" height="250px" />
+  <h2>{{ pet.name }}</h2>
+  <p>{{ pet.age }} year{{ pet.age | pluralize }} old</p>
+  <p>{{ pet.sex }}</p>
+  <p>{{ pet.type }}</p>
+  <a href="#"
+    ><p>{{ pet.family }}</p></a
+  >
+  <p>Bio: {{ pet.bio }}</p>
+  <h3>Notes</h3>
+  <h4>Feeding:</h4>
+  <p>{{ pet.feeding_routine }}</p>
+  <h4>Daily Routine:</h4>
+  <p>{{ pet.daily_routine }}</p>
+  <h4>Medical:</h4>
+  <p>{{ pet.medical_routine }}</p>
+  <h4>Other:</h4>
+  <p>{{ pet.other_notes }}</p>
+</div>
+
+{% endblock content %}
