@@ -73,6 +73,8 @@ class PetUpdateView(UpdateView, LoginRequiredMixin):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
+    # TODO: redirect to the updated pet's detail page
+
 
 class PetDeleteView(DeleteView, LoginRequiredMixin):
 
@@ -93,3 +95,62 @@ class FamilyListView(ListView, LoginRequiredMixin):
 
     def get_queryset(self):
         return Family.objects.filter(user_id=self.request.user.id)
+
+
+class FamilyDetailView(DetailView, LoginRequiredMixin):
+    template_name = './family_detail.html'
+    model = Family
+    context_object_name = 'family'
+    login_url = reverse_lazy('login')
+
+    def get_queryset(self):
+        return Family.objects.filter(id=self.kwargs['pk'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['family'] = Family.objects.get(pk=self.kwargs['pk'])
+        return context
+
+
+class FamilyCreateView(CreateView, LoginRequiredMixin):
+    template_name = './family_create.html'
+    model = Family
+    form_class = FamilyForm
+    login_url = reverse_lazy('login')
+    success_url = reverse_lazy('family_list')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    # TODO: redirect to newly created family detail page
+
+
+class FamilyUpdateView(UpdateView, LoginRequiredMixin):
+    template_name = './family_create.html'
+    model = Family
+    form_class = FamilyForm
+    login_url = reverse_lazy('login')
+    success_url = reverse_lazy('family_list')
+
+    def get_queryset(self):
+        return Family.objects.filter(id=self.kwargs['pk'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['family'] = Family.objects.get(pk=self.kwargs['pk'])
+        return context
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    # TODO: redirect to the updated pet's detail page
+
+
+class FamilyDeleteView(DeleteView, LoginRequiredMixin):
+
+    template_name = './family_delete.html'
+    model = Family
+    context_object_name = 'family'
+    success_url = reverse_lazy('family_list')

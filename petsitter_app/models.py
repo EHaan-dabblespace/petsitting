@@ -8,6 +8,8 @@ from django.contrib.auth.models import User
 class Family(models.Model):
     """ Model for Families. """
 
+    # TODO: Address why user shows up in the html form
+
     user = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='family', null=True)
     household = models.CharField(max_length=48)

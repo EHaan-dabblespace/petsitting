@@ -1,0 +1,28 @@
+{% extends 'generic/base.html' %} {% block content %}
+
+<div class="family-detail container">
+  {% if family.photo %}
+  <img src="{{ family.photo.url }}" width="200px" height="250px" />
+  {% endif %}
+  <h2>{{ family.household }}</h2>
+  <p>{{ family.address }}</p>
+  <p>{{ family.contact1 }}</p>
+  <p>{{ family.contact1_phone }}</p>
+  <p>{{ family.contact1_email }}</p>
+  <p>{{ family.contact2 }}</p>
+  <p>{{ family.contact2_phone }}</p>
+  <p>{{ family.contact2_email }}</p>
+  <p>Household Notes: {{ family.notes }}</p>
+  <p>{{ family.emergency1_contact }}</p>
+  <p>{{ family.emergency1_phone }}</p>
+  <p>{{ family.emergency2_contact }}</p>
+  <p>{{ family.emergency2_phone }}</p>
+  <p>{{ family.vet }}</p>
+  <p>{{ family.vet_phone }}</p>
+  <p>{{ family.vet_address }}</p>
+</div>
+
+<a href="{% url 'family_update' family.id %}">Update</a>
+<a href="{% url 'family_delete' family.id %}">Remove</a>
+
+{% endblock content %}
