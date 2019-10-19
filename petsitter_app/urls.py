@@ -13,4 +13,6 @@ urlpatterns = [
     path('families/<int:pk>', FamilyDetailView.as_view(), name='family_detail'),
     path('families/<int:pk>/update',
          FamilyUpdateView.as_view(), name='family_update'),
+    path('families/<int:pk>/delete',
+         FamilyDeleteView.as_view(), name='family_delete'),
 ]

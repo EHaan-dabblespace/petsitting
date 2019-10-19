@@ -1,0 +1,9 @@
+{% extends 'generic/base.html' %} {% block content %}
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <p>Are you sure you want to remove {{ family.household }}?</p>
+  <input type="submit" value="Remove" />
+</form>
+
+{% endblock content %}

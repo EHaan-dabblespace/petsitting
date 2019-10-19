@@ -146,3 +146,11 @@ class FamilyUpdateView(UpdateView, LoginRequiredMixin):
         return super().form_valid(form)
 
     # TODO: redirect to the updated pet's detail page
+
+
+class FamilyDeleteView(DeleteView, LoginRequiredMixin):
+
+    template_name = './family_delete.html'
+    model = Family
+    context_object_name = 'family'
+    success_url = reverse_lazy('family_list')
