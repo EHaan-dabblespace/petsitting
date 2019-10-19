@@ -6,12 +6,12 @@
   </a>
   {% for family in families %}
   <div class="family-card container" box-border="1px black solid">
-    <a href="#">
+    <a href="{% url 'family_detail' family.id %}">
       {% if family.photo %}
       <img src="{{ family.photo.url }}" width="200px" height="250px" />
       {% endif %}
+      <p>{{ family.household }}</p>
     </a>
-    <p>{{ family.household }}</p>
   </div>
   {% endfor %}
 </div>
