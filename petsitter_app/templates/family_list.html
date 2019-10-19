@@ -1,7 +1,7 @@
 {% extends 'generic/base.html' %} {% block content %}
 
 <div class="pet-list container">
-  <a href="#">
+  <a href="{% url 'family_create' %}">
     <img src="" width="200px" height="250px" box-border="1px black solid" />
   </a>
   {% for family in families %}

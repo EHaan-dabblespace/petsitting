@@ -9,5 +9,8 @@ urlpatterns = [
     path('pets/<int:pk>/delete', PetDeleteView.as_view(), name='pet_delete'),
 
     path('families/', FamilyListView.as_view(), name='family_list'),
+    path('families/create', FamilyCreateView.as_view(), name='family_create'),
     path('families/<int:pk>', FamilyDetailView.as_view(), name='family_detail'),
+    path('families/<int:pk>/update',
+         FamilyUpdateView.as_view(), name='family_update'),
 ]
