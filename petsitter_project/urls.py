@@ -26,8 +26,8 @@ urlpatterns = [
     path('accounts/', include('django_registration.backends.activation.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
 
-    path('', LoginView.as_view(), name='login'),
+    # path('', LoginView.as_view(), name='login'),
 
-    path('profile/', include('petsitter_app.urls')),
+    path('', include('petsitter_app.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

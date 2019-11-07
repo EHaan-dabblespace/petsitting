@@ -1,26 +1,33 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{% block title %}NoTitle{% endblock title %}</title>
-  </head>
-  <body>
-    <nav>
-      <ul>
-        {% if user.is_authenticated %} {% if user.is_superuser %}
-        <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
-        {% endif %}
-        <li><a href="{% url 'pet_list' %}">PETS</a></li>
-        <li><a href="{% url 'family_list' %}">FAMILIES</a></li>
-        <li><a href="{% url 'logout' %}">LOGOUT</a></li>
-        {% endif %}
-      </ul>
-    </nav>
-    <main>
-      {% block content %} Woof! {% endblock content %}
-    </main>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>{% block title %}NoTitle{% endblock title %}</title>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      {% if user.is_authenticated %}
+      {% if user.is_superuser %}
+      <li><a href="{% url 'admin:index' %}">ADMIN</a></li>
+      {% endif %}
+      <li><a href="{% url 'pet_list' %}">PETS</a></li>
+      <li><a href="{% url 'family_list' %}">FAMILIES</a></li>
+      <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+      {% else %}
+      <li><a href="{% url 'django_registration_register' %}">SIGN UP</a></li>
+      <li><a href="{% url 'login' %}">SIGN IN</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  <main>
+    {% block content %} Woof! {% endblock content %}
+  </main>
+</body>
+
 </html>
